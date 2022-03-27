@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color:#101010;">
+
+<!--div id="displaybox" style="width:100%;height:100%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"-->
+<div id="displaybox" style="position: absolute;top:0;bottom: 0;left: 0;right: 0;margin: auto;align-items: center;display:flex;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1200px" height="320px" viewBox="-2 -1 79 20" style="margin:0 auto;display:block">
+        <filter id="neon">
+            <feFlood id="floodopacity" flood-color="rgb(255,12,0)" flood-opacity="0.2" in="SourceGraphic" />
+            <feComposite operator="in" in2="SourceGraphic" />
+            <feGaussianBlur id="floodsize" stdDeviation="0.5" />
+            <feComponentTransfer result="glow1">
+                <feFuncA type="linear" slope="4" intercept="0" />
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode in="glow1" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <g transform="skewX(-5)" style="fill-rule:evenodd; stroke-opacity:1; stroke-linecap:butt; stroke-linejoin:miter;" fill="#ff1200" filter="url(#neon)">
+            <g id="d1" transform="translate(0, 0)">
+                <polygon class="a" points=" 1.2, 1  2, 0.2  8, 0.2  8.8, 1  8, 1.8  2, 1.8" />
+                <polygon class="b" points=" 9, 1.2 9.8, 2 9.8, 8  9, 8.8  8.2, 8  8.2, 2" />
+                <polygon class="c" points=" 9, 9.2 9.8,10 9.8,16  9,16.8  8.2,16  8.2,10" />
+                <polygon class="d" points=" 8.8,17  8,17.8  2,17.8  1.2,17  2,16.2  8,16.2" />
+                <polygon class="e" points=" 1,16.8  0.2,16  0.2,10  1, 9.2  1.8,10  1.8,16" />
+                <polygon class="f" points=" 1, 8.8  0.2, 8  0.2, 2  1, 1.2  1.8, 2  1.8, 8" />
+                <polygon class="g" points=" 1.2, 9  2, 8.2  8, 8.2  8.8, 9  8,9.8  2,9.8" />
+            </g>
+            <g id="d2" transform="translate(12, 0)">
+                <polygon class="a" points=" 1.2, 1  2, 0.2  8, 0.2  8.8, 1  8, 1.8  2, 1.8" />
+                <polygon class="b" points=" 9, 1.2 9.8, 2 9.8, 8  9, 8.8  8.2, 8  8.2, 2" />
+                <polygon class="c" points=" 9, 9.2 9.8,10 9.8,16  9,16.8  8.2,16  8.2,10" />
+                <polygon class="d" points=" 8.8,17  8,17.8  2,17.8  1.2,17  2,16.2  8,16.2" />
+                <polygon class="e" points=" 1,16.8  0.2,16  0.2,10  1, 9.2  1.8,10  1.8,16" />
+                <polygon class="f" points=" 1, 8.8  0.2, 8  0.2, 2  1, 1.2  1.8, 2  1.8, 8" />
+                <polygon class="g" points=" 1.2, 9  2, 8.2  8, 8.2  8.8, 9  8,9.8  2,9.8" />
+            </g>
+            <g id="d3" transform="translate(26, 0)">
+                <polygon class="a" points=" 1.2, 1  2, 0.2  8, 0.2  8.8, 1  8, 1.8  2, 1.8" />
+                <polygon class="b" points=" 9, 1.2 9.8, 2 9.8, 8  9, 8.8  8.2, 8  8.2, 2" />
+                <polygon class="c" points=" 9, 9.2 9.8,10 9.8,16  9,16.8  8.2,16  8.2,10" />
+                <polygon class="d" points=" 8.8,17  8,17.8  2,17.8  1.2,17  2,16.2  8,16.2" />
+                <polygon class="e" points=" 1,16.8  0.2,16  0.2,10  1, 9.2  1.8,10  1.8,16" />
+                <polygon class="f" points=" 1, 8.8  0.2, 8  0.2, 2  1, 1.2  1.8, 2  1.8, 8" />
+                <polygon class="g" points=" 1.2, 9  2, 8.2  8, 8.2  8.8, 9  8,9.8  2,9.8" />
+            </g>
+            <g id="d4" transform="translate(38, 0)">
+                <polygon class="a" points=" 1.2, 1  2, 0.2  8, 0.2  8.8, 1  8, 1.8  2, 1.8" />
+                <polygon class="b" points=" 9, 1.2 9.8, 2 9.8, 8  9, 8.8  8.2, 8  8.2, 2" />
+                <polygon class="c" points=" 9, 9.2 9.8,10 9.8,16  9,16.8  8.2,16  8.2,10" />
+                <polygon class="d" points=" 8.8,17  8,17.8  2,17.8  1.2,17  2,16.2  8,16.2" />
+                <polygon class="e" points=" 1,16.8  0.2,16  0.2,10  1, 9.2  1.8,10  1.8,16" />
+                <polygon class="f" points=" 1, 8.8  0.2, 8  0.2, 2  1, 1.2  1.8, 2  1.8, 8" />
+                <polygon class="g" points=" 1.2, 9  2, 8.2  8, 8.2  8.8, 9  8,9.8  2,9.8" />
+            </g>
+            <g id="d5" transform="translate(52, 0)">
+                <polygon class="a" points=" 1.2, 1  2, 0.2  8, 0.2  8.8, 1  8, 1.8  2, 1.8" />
+                <polygon class="b" points=" 9, 1.2 9.8, 2 9.8, 8  9, 8.8  8.2, 8  8.2, 2" />
+                <polygon class="c" points=" 9, 9.2 9.8,10 9.8,16  9,16.8  8.2,16  8.2,10" />
+                <polygon class="d" points=" 8.8,17  8,17.8  2,17.8  1.2,17  2,16.2  8,16.2" />
+                <polygon class="e" points=" 1,16.8  0.2,16  0.2,10  1, 9.2  1.8,10  1.8,16" />
+                <polygon class="f" points=" 1, 8.8  0.2, 8  0.2, 2  1, 1.2  1.8, 2  1.8, 8" />
+                <polygon class="g" points=" 1.2, 9  2, 8.2  8, 8.2  8.8, 9  8,9.8  2,9.8" />
+            </g>
+            <g id="d6" transform="translate(64, 0)">
+                <polygon class="a" points=" 1.2, 1  2, 0.2  8, 0.2  8.8, 1  8, 1.8  2, 1.8" />
+                <polygon class="b" points=" 9, 1.2 9.8, 2 9.8, 8  9, 8.8  8.2, 8  8.2, 2" />
+                <polygon class="c" points=" 9, 9.2 9.8,10 9.8,16  9,16.8  8.2,16  8.2,10" />
+                <polygon class="d" points=" 8.8,17  8,17.8  2,17.8  1.2,17  2,16.2  8,16.2" />
+                <polygon class="e" points=" 1,16.8  0.2,16  0.2,10  1, 9.2  1.8,10  1.8,16" />
+                <polygon class="f" points=" 1, 8.8  0.2, 8  0.2, 2  1, 1.2  1.8, 2  1.8, 8" />
+                <polygon class="g" points=" 1.2, 9  2, 8.2  8, 8.2  8.8, 9  8,9.8  2,9.8" />
+                <animatetransform id="testanimate" attributeName="transform" attributeType="XML"
+                                  begin="indefinite" type="translate" from="0 0" to="0 0.5" dur="3s"
+                                  additive="sum" fill="freeze"/>
+            </g>
+            <g id="dots">
+                <circle cx="24" cy="6" r="0.8"></circle>
+                <circle cx="24" cy="12" r="0.8"></circle>
+                <circle cx="50" cy="6" r="0.8"></circle>
+                <circle cx="50" cy="12" r="0.8"></circle>
+            </g>
+        </g>
+    </svg>
+</div>
+
+
+</body>
+<script>
+
+    //--- Data structures and initialization
+    let segmentDisplay = [
+        [1, 1, 1, 1, 1, 1, 0], // 0
+        [0, 1, 1, 0, 0, 0, 0], // 1
+        [1, 1, 0, 1, 1, 0, 1], // 2
+        [1, 1, 1, 1, 0, 0, 1], // 3
+        [0, 1, 1, 0, 0, 1, 1], // 4
+        [1, 0, 1, 1, 0, 1, 1], // 5
+        [1, 0, 1, 1, 1, 1, 1], // 6
+        [1, 1, 1, 0, 0, 0, 0], // 7
+        [1, 1, 1, 1, 1, 1, 1], // 8
+        [1, 1, 1, 1, 0, 1, 1], // 9
+
+        // Enter the Chaos Zone
+        [1, 1, 1, 0, 1, 1, 1], // A
+        [0, 0, 1, 1, 1, 1, 1], // b
+        [0, 0, 0, 1, 1, 0, 1], // c
+        [0, 1, 1, 1, 1, 0, 1], // d
+        [1, 0, 0, 1, 1, 1, 1], // E
+        [1, 0, 0, 0, 1, 1, 1], // F
+        [1, 0, 0, 1, 0, 0, 1], // Xi
+        [0, 1, 1, 0, 1, 1, 0], // ||
+        [0, 0, 0, 1, 1, 1, 0], // L
+        [1, 1, 1, 1, 1, 0, 0], // inverted G
+        [0, 1, 0, 0, 1, 0, 1], // Thunderbolt
+        [0, 1, 0, 0, 1, 1, 1], // backwards 4
+        [0, 1, 0, 1, 1, 1, 1], // backwards 4 with tail
+
+    ];
+    let segmentClasses = [".a", ".b", ".c", ".d", ".e", ".f", ".g"];
+    let displayIdSelectors = ["#d1", "#d2", "#d3", "#d4", "#d5", "#d6"];
+    let maxHours = 12;
+    let maxMinutes = 60;
+    let maxSeconds = 60;
+
+    let currentTime = new Date();
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+    let seconds = currentTime.getSeconds();
+    let msPerSecond = 1000;
+
+    //--- Helper functions
+    function writeDisplays(displaySelectors, values) {
+        displaySelectors.forEach((displaySelector, displayIndex) => {
+            let display = document.querySelector(displaySelector);
+            let value = values[displayIndex];
+            segmentClasses.forEach((sc, index) => {
+                display.querySelector(sc).style.opacity = segmentDisplay[value][index].toString();
+            })
+        })
+    }
+
+    function randomChoice(choices) {
+        return weightedRandomChoice(choices.map(v => [v, 1]))
+    }
+
+    function weightedRandomChoice(choices) {
+        const items = choices.map(v => v[0]);
+        const weights = choices.map(v => v[1]);
+        let i;
+        for (i = 0; i < weights.length; i++)
+            weights[i] += weights[i - 1] || 0;
+
+        let random = Math.random() * weights[weights.length - 1];
+        for (i = 0; i < weights.length; i++)
+            if (weights[i] > random)
+                break;
+
+        return items[i];
+    }
+
+    function translateElement( element, distance, durationMs)
+    {
+        var xforms = element.getAttribute('transform');
+        var parts  = /translate\(\s*([^\s,)]+)[ ,]+([^\s,)]+)/.exec(xforms);
+        var firstX = parseFloat(parts[1]),
+            firstY = parseFloat(parts[2]);
+
+        let x, y;
+        element.transform.baseVal.getItem( 0 );
+        const steps = durationMs / 20;
+        for( let i = 0; i < steps; i++ )
+        {
+            setTimeout( function( ) {
+                x = distance.x * i / steps + firstX;
+                y = distance.y * i / steps + firstY;
+                element.transform.baseVal.getItem( 0 ).setTranslate( x, y );
+            }, i * 20);
+        }
+    }
+
+    //--- Chaos functions
+
+    function translateDisplay() {
+        // randomly select display
+        const displayIdSelector = randomChoice(displayIdSelectors);
+        const deltaPosition = randomChoice([
+            {x:  0  , y:  0.2},
+            {x:  0.2, y:  0.2},
+            {x:  0.2, y:  0  },
+            {x:  0.2, y: -0.2},
+            {x:  0  , y: -0.2},
+            {x: -0.2, y: -0.2},
+            {x: -0.2, y:  0  },
+            {x: -0.2, y:  0.2}
+        ])
+        let displayElement = document.querySelector(displayIdSelector);
+        translateElement(displayElement, deltaPosition, 5000);
+    }
+    function swapNumbers() {
+        // generate a pair without replacement
+        const displayCount = segmentDisplay.length;
+        const index1 = Math.floor(Math.random() * displayCount);
+        let index2 = Math.floor(Math.random() * (displayCount - 1));
+        if (index1 <= index2) index2++;
+        const tmp = segmentDisplay[index1];
+        segmentDisplay[index1] = segmentDisplay[index2];
+        segmentDisplay[index2] = tmp;
+    }
+    function editNumber() {
+        const numberIndex = Math.floor(Math.random() * 10); // 10 is hardcoded because only edit a live number
+        const segmentIndex = Math.floor(Math.random() * 7);
+        let curr = segmentDisplay[numberIndex][segmentIndex];
+        segmentDisplay[numberIndex][segmentIndex] = 1 - curr;
+    }
+
+    function changeFlowOfTime() {
+        msPerSecond = 700 + Math.floor(Math.random() * 601);
+    }
+
+    function editFlood() {
+        const floodOpacity = document.querySelector("#floodopacity");
+        const floodSize = document.querySelector("#floodsize");
+        const targetOpacity = 0.1 + 0.3 * Math.random();
+        const targetSize = 0.2 + Math.random();
+        const startingOpacity = parseFloat(floodOpacity.getAttribute("flood-opacity"));
+        const startingSize = parseFloat(floodSize.getAttribute("stdDeviation"));
+        const steps = 5000 / 20;
+        for( let i = 0; i < steps; i++ )
+        {
+            setTimeout(function() {
+                const alpha = i / steps;
+                floodOpacity.setAttribute("flood-opacity", (startingOpacity * (1-alpha) + targetOpacity * alpha).toString());
+                floodSize.setAttribute("stdDeviation", (startingSize * (1-alpha) + targetSize * alpha).toString());
+            }, i * 20);
+        }
+    }
+    function swapDisplays() {
+        const displayCount = displayIdSelectors.length;
+        const index1 = Math.floor(Math.random() * displayCount);
+        let index2 = Math.floor(Math.random() * (displayCount - 1));
+        if (index1 <= index2) index2++;
+        const tmp = displayIdSelectors[index1];
+        displayIdSelectors[index1] = displayIdSelectors[index2];
+        displayIdSelectors[index2] = tmp;
+    }
+
+    function changeCarryAt() {
+        const newCarryAt = weightedRandomChoice([
+            [60, 20],
+            [61, 6],
+            [31, 7],
+            [28, 1],
+            [30, 4],
+            [73, 3],
+            [12, 4],
+            [40, 4],
+            [10 + Math.floor(Math.random() * 91), 6],
+            [24, 4]
+        ]);
+        if (Math.random() > 0.5) {
+            maxSeconds = newCarryAt;
+        } else {
+            maxMinutes = newCarryAt;
+        }
+    }
+
+    function createChaos() {
+        let chaosFunc = weightedRandomChoice([
+            [translateDisplay, 1],
+            [swapNumbers, 3],
+            [editNumber, 1],
+            [changeFlowOfTime, 1],
+            [editFlood, 1],
+            [swapDisplays, 2],
+            [changeCarryAt, 2]
+        ]);
+        console.log(chaosFunc.name);
+        chaosFunc();
+    }
+
+    //--- Begin
+
+    function update() {
+
+        // small chance of creating chaos at any given second
+        if (Math.random() < 0.05) {
+            createChaos();
+        }
+
+        seconds++;
+        if (seconds >= maxSeconds) {
+            seconds = seconds - maxSeconds;
+            minutes++;
+        }
+        if (minutes >= maxMinutes) {
+            minutes = minutes - maxMinutes;
+            hours++;
+        }
+        if (hours > maxHours) {
+            hours = hours - maxHours;
+        }
+
+        let h1 = Math.floor(hours / 10);
+        let h2 = hours % 10;
+
+        let m1 = Math.floor(minutes / 10);
+        let m2 = minutes % 10;
+
+        let s1 = Math.floor(seconds / 10);
+        let s2 = seconds % 10;
+
+        // set all the displays
+        writeDisplays(displayIdSelectors, [h1, h2, m1, m2, s1, s2]);
+
+        // turn the dots on,
+        document.querySelector("#dots").style.opacity = "1";
+        // and 500 ms later, turn them off too.
+        setTimeout(function() {
+            document.querySelector("#dots").style.opacity = "0";
+        }, msPerSecond/2);
+        setTimeout(update, msPerSecond);
+    }
+
+    update();
+    // Ensure at least one instance of chaos in the first 15-ish seconds.
+    setTimeout(createChaos, Math.random() * 5000 + 13000);
+
+</script>
+</html>

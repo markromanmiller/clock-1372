@@ -93,7 +93,7 @@
 </body>
 <script>
 
-    //--- Data structures and initialization
+    //--- Data structures
     let segmentDisplay = [
         [1, 1, 1, 1, 1, 1, 0], // 0
         [0, 1, 1, 0, 0, 0, 0], // 1
@@ -132,16 +132,23 @@
     let segmentClasses = [".a", ".b", ".c", ".d", ".e", ".f", ".g"];
     let displayIdSelectors = ["#d1", "#d2", "#d3", "#d4", "#d5", "#d6"];
     let dotTimingsFactor = [0.5, 0.5, 0.5, 0.5];
-    let dotSelectors = ["#dot-tl", "#dot-bl", "#dot-tr", "#dot-br"]
-    let maxHours = 12;
-    let maxMinutes = 60;
-    let maxSeconds = 60;
+    let dotSelectors = ["#dot-tl", "#dot-bl", "#dot-tr", "#dot-br"];
+    let carryValues = [{at: 1, prev: 2}, {at: 10}, {at: 6}, {at: 10}, {at: 6}, {at: 10}];
+    let msPerSecond = 1000;
 
+    // Initialize timing
     let currentTime = new Date();
     let hours = currentTime.getHours();
     let minutes = currentTime.getMinutes();
     let seconds = currentTime.getSeconds();
-    let msPerSecond = 1000;
+    let currentTimeDigits = [
+        Math.floor(hours / 10),
+        hours % 10,
+        Math.floor(minutes / 10),
+        minutes % 10,
+        Math.floor(seconds / 10),
+        seconds % 10
+    ];
 
     //--- Helper functions
     function writeDisplays(displaySelectors, values) {
@@ -175,10 +182,10 @@
 
     function translateElement( element, distance, durationMs)
     {
-        var xforms = element.getAttribute('transform');
-        var parts  = /translate\(\s*([^\s,)]+)[ ,]+([^\s,)]+)/.exec(xforms);
-        var firstX = parseFloat(parts[1]),
-            firstY = parseFloat(parts[2]);
+        const xforms = element.getAttribute('transform');
+        const parts  = /translate\(\s*([^\s,)]+)[ ,]+([^\s,)]+)/.exec(xforms);
+        const firstX = parseFloat(parts[1]),
+              firstY = parseFloat(parts[2]);
 
         let x, y;
         element.transform.baseVal.getItem( 0 );
@@ -261,7 +268,7 @@
 
     function superliminalChaos() {
         let chaosFunc = weightedRandomChoice([
-            [swapNumbers, 3],
+            [swapNumbers, 5],
             [editNumber, 1]
             //[swapDisplays, 2],
             //[changeCarryAt, 2]
@@ -320,41 +327,60 @@
         if (Math.random() < 0.06) {
             subliminalChaos();
         }
-        if (Math.random() < 0.06) {
+        if (Math.random() < 0.03) {
             superliminalChaos();
         }
 
-        seconds++;
-        if (seconds >= maxSeconds) {
-            seconds = seconds - maxSeconds;
-            minutes++;
-        }
-        if (minutes >= maxMinutes) {
-            minutes = minutes - maxMinutes;
-            hours++;
-        }
-        if (hours > maxHours) {
-            hours = hours - maxHours;
-        }
+        // increment at 5
+        let digitsIndex = 5;
+        let continueCarrying = true;
 
-        let h1 = Math.floor(hours / 10);
-        let h2 = hours % 10;
+        while(continueCarrying && digitsIndex >= 0) {
 
-        let m1 = Math.floor(minutes / 10);
-        let m2 = minutes % 10;
+            // usually increase, but sometimes do something different to the value
+            currentTimeDigits[digitsIndex] += weightedRandomChoice([[1, 200], [-1, 1], [2, 2]]);
+            if (currentTimeDigits[digitsIndex] < 0) {
+                currentTimeDigits[digitsIndex] = 0;
+            }
 
-        let s1 = Math.floor(seconds / 10);
-        let s2 = seconds % 10;
+            // consider carrying
+            if (currentTimeDigits[digitsIndex] > carryValues[digitsIndex]["at"]        // value is too big
+                || (currentTimeDigits[digitsIndex] === carryValues[digitsIndex]["at"]  // or value is the right size
+                    && (digitsIndex + 1 < currentTimeDigits.length                     // and can't have a prev,
+                        || carryValues[digitsIndex]["prev"] === undefined              // doesn't have a prev,
+                        || currentTimeDigits[digitsIndex+1] < carryValues[digitsIndex]["prev"] // or too big for prev
+            ))) {
+                currentTimeDigits[digitsIndex] = 0;
+                digitsIndex--;
+                // sometimes, choose another digit and exit early.
+                if (Math.random() < 0.05 && digitsIndex > 0) {
+                    digitsIndex--;
+                    // add to a random index, and be complete.
+                    while (digitsIndex > 0) {
+                        if (Math.random() < 0.1) {
+                            digitsIndex--;
+                        } else {
+                            break;
+                        }
+                    }
+                    currentTimeDigits[digitsIndex]++;
+                    continueCarrying = false;
+                }
+                // fallthrough here means check the next entry.
+            } else {
+                continueCarrying = false;
+            }
+        }
 
         // set all the displays
-        writeDisplays(displayIdSelectors, [h1, h2, m1, m2, s1, s2]);
+        writeDisplays(displayIdSelectors, currentTimeDigits);
 
         // turn the dots on,
         dotSelectors.forEach((val, ind) => {
             document.querySelector(val).style.opacity = "1";
         });
 
-        // and 500 ms later, turn them off too.
+        // and a little later, turn them off too.
         dotSelectors.forEach((val, ind) => {
             setTimeout(function() {
                 document.querySelector(val).style.opacity = "0";

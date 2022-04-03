@@ -131,6 +131,8 @@
     ];
     let segmentClasses = [".a", ".b", ".c", ".d", ".e", ".f", ".g"];
     let displayIdSelectors = ["#d1", "#d2", "#d3", "#d4", "#d5", "#d6"];
+    let dotTimingsFactor = [0.5, 0.5, 0.5, 0.5];
+    let dotSelectors = ["#dot-tl", "#dot-bl", "#dot-tr", "#dot-br"]
     let maxHours = 12;
     let maxMinutes = 60;
     let maxSeconds = 60;
@@ -291,11 +293,20 @@
         }
     }
 
+    function skewFlashes() {
+        const delta = Math.random() * 0.1 - 0.05
+        dotTimingsFactor = [
+            0.5 + delta, 0.5 + delta,
+            0.5 - delta, 0.5 - delta
+        ]
+    }
+
     function subliminalChaos() {
         let chaosFunc = weightedRandomChoice([
             [changeFlowOfTime, 1],
             [editFlood, 1],
-            [translateDisplay, 1] // 1/50-sih
+            [translateDisplay, 1], // 1/50-sih, so shaking is 1/500s.
+            [skewFlashes, 1]
         ]);
         console.log(chaosFunc.name);
         chaosFunc();
@@ -339,11 +350,17 @@
         writeDisplays(displayIdSelectors, [h1, h2, m1, m2, s1, s2]);
 
         // turn the dots on,
-        document.querySelector("#dots").style.opacity = "1";
+        dotSelectors.forEach((val, ind) => {
+            document.querySelector(val).style.opacity = "1";
+        });
+
         // and 500 ms later, turn them off too.
-        setTimeout(function() {
-            document.querySelector("#dots").style.opacity = "0";
-        }, msPerSecond/2);
+        dotSelectors.forEach((val, ind) => {
+            setTimeout(function() {
+                document.querySelector(val).style.opacity = "0";
+            }, msPerSecond * dotTimingsFactor[ind]);
+        });
+
         setTimeout(update, msPerSecond);
     }
 

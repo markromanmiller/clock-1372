@@ -220,14 +220,26 @@
         translateElement(displayElement, deltaPosition, 5000);
     }
     function swapNumbers() {
-        // generate a pair without replacement
-        const displayCount = segmentDisplay.length;
-        const index1 = Math.floor(Math.random() * displayCount);
-        let index2 = Math.floor(Math.random() * (displayCount - 1));
-        if (index1 <= index2) index2++;
+        let index1, index2;
+        do {
+            // generate a pair without replacement
+            const displayCount = segmentDisplay.length;
+            index1 = Math.floor(Math.random() * displayCount);
+            index2 = Math.floor(Math.random() * (displayCount - 1));
+            if (index1 <= index2) index2++;
+        } while (
+            // reject pairs where one or the other value is currently visible,
+            // or when it won't be in the first 10 digits.
+            // TODO: or where both won't be in the next 15 seconds-ish
+            currentTimeDigits.includes(index1)
+                || currentTimeDigits.includes(index2)
+                || (index1 >= 10 && index2 >= 10)
+            )
+
         const tmp = segmentDisplay[index1];
         segmentDisplay[index1] = segmentDisplay[index2];
         segmentDisplay[index2] = tmp;
+
     }
     function editNumber() {
         const numberIndex = Math.floor(Math.random() * 10); // 10 is hardcoded because only edit a live number
@@ -327,7 +339,7 @@
         if (Math.random() < 0.08) {
             subliminalChaos();
         }
-        if (Math.random() < 0.03) {
+        if (Math.random() < 0.05) {
             superliminalChaos();
         }
 

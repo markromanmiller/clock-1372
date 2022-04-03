@@ -80,10 +80,10 @@
                                   additive="sum" fill="freeze"/>
             </g>
             <g id="dots">
-                <circle cx="24" cy="6" r="0.8"></circle>
-                <circle cx="24" cy="12" r="0.8"></circle>
-                <circle cx="50" cy="6" r="0.8"></circle>
-                <circle cx="50" cy="12" r="0.8"></circle>
+                <circle id="dot-tl" cx="24" cy="6" r="0.8"></circle>
+                <circle id="dot-bl" cx="24" cy="12" r="0.8"></circle>
+                <circle id="dot-tr" cx="50" cy="6" r="0.8"></circle>
+                <circle id="dot-br" cx="50" cy="12" r="0.8"></circle>
             </g>
         </g>
     </svg>
@@ -193,6 +193,7 @@
 
     //--- Chaos functions
 
+    //-- Superliminal chaos
     function translateDisplay() {
         // randomly select display
         const displayIdSelector = randomChoice(displayIdSelectors);
@@ -226,27 +227,6 @@
         segmentDisplay[numberIndex][segmentIndex] = 1 - curr;
     }
 
-    function changeFlowOfTime() {
-        msPerSecond = 700 + Math.floor(Math.random() * 601);
-    }
-
-    function editFlood() {
-        const floodOpacity = document.querySelector("#floodopacity");
-        const floodSize = document.querySelector("#floodsize");
-        const targetOpacity = 0.1 + 0.3 * Math.random();
-        const targetSize = 0.2 + Math.random();
-        const startingOpacity = parseFloat(floodOpacity.getAttribute("flood-opacity"));
-        const startingSize = parseFloat(floodSize.getAttribute("stdDeviation"));
-        const steps = 5000 / 20;
-        for( let i = 0; i < steps; i++ )
-        {
-            setTimeout(function() {
-                const alpha = i / steps;
-                floodOpacity.setAttribute("flood-opacity", (startingOpacity * (1-alpha) + targetOpacity * alpha).toString());
-                floodSize.setAttribute("stdDeviation", (startingSize * (1-alpha) + targetSize * alpha).toString());
-            }, i * 20);
-        }
-    }
     function swapDisplays() {
         const displayCount = displayIdSelectors.length;
         const index1 = Math.floor(Math.random() * displayCount);
@@ -277,15 +257,45 @@
         }
     }
 
-    function createChaos() {
+    function superliminalChaos() {
         let chaosFunc = weightedRandomChoice([
-            [translateDisplay, 1],
-            [swapNumbers, 5],
-            [editNumber, 1],
-            [changeFlowOfTime, 1],
-            [editFlood, 1]
+            [swapNumbers, 3],
+            [editNumber, 1]
             //[swapDisplays, 2],
             //[changeCarryAt, 2]
+        ]);
+        console.log(chaosFunc.name);
+        chaosFunc();
+    }
+
+    //-- Subliminal chaos
+    function changeFlowOfTime() {
+        msPerSecond = 700 + Math.floor(Math.random() * 601);
+    }
+
+    function editFlood() {
+        const floodOpacity = document.querySelector("#floodopacity");
+        const floodSize = document.querySelector("#floodsize");
+        const targetOpacity = 0.1 + 0.3 * Math.random();
+        const targetSize = 0.2 + Math.random();
+        const startingOpacity = parseFloat(floodOpacity.getAttribute("flood-opacity"));
+        const startingSize = parseFloat(floodSize.getAttribute("stdDeviation"));
+        const steps = 5000 / 20;
+        for( let i = 0; i < steps; i++ )
+        {
+            setTimeout(function() {
+                const alpha = i / steps;
+                floodOpacity.setAttribute("flood-opacity", (startingOpacity * (1-alpha) + targetOpacity * alpha).toString());
+                floodSize.setAttribute("stdDeviation", (startingSize * (1-alpha) + targetSize * alpha).toString());
+            }, i * 20);
+        }
+    }
+
+    function subliminalChaos() {
+        let chaosFunc = weightedRandomChoice([
+            [changeFlowOfTime, 1],
+            [editFlood, 1],
+            [translateDisplay, 1] // 1/50-sih
         ]);
         console.log(chaosFunc.name);
         chaosFunc();
@@ -296,8 +306,11 @@
     function update() {
 
         // small chance of creating chaos at any given second
-        if (Math.random() < 0.05) {
-            createChaos();
+        if (Math.random() < 0.06) {
+            subliminalChaos();
+        }
+        if (Math.random() < 0.06) {
+            superliminalChaos();
         }
 
         seconds++;
@@ -335,8 +348,8 @@
     }
 
     update();
-    // Ensure at least one instance of chaos in the first 15-ish seconds.
-    setTimeout(createChaos, Math.random() * 5000 + 13000);
+    // Ensure at least one instance of superliminal chaos in the first 15-ish seconds.
+    setTimeout(superliminalChaos, Math.random() * 5000 + 13000);
 
 </script>
 </html>
